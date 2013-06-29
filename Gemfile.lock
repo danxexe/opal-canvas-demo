@@ -8,6 +8,8 @@ GEM
     multi_json (1.7.7)
     opal (0.4.1)
       source_map
+    opal-jquery (0.0.10)
+      opal (>= 0.3.43)
     opal-sprockets (0.1.0)
       opal (~> 0.4.0)
       sprockets
@@ -32,6 +34,7 @@ PLATFORMS
 
 DEPENDENCIES
   opal
+  opal-jquery
   opal-sprockets
   pry
   rack

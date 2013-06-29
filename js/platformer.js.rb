@@ -1,5 +1,7 @@
 require 'platformer/events'
+require 'platformer/fps_limiter'
 require 'platformer/game'
+require 'platformer/actor_input'
 require 'platformer/actor'
 require 'platformer/canvas_renderer'
 require 'platformer/dsl'

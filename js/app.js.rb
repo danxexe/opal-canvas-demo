@@ -1,4 +1,6 @@
+require 'jquery'
 require 'opal'
+require 'opal-jquery'
 require 'platformer'
 
 include Platformer::DSL
@@ -9,30 +11,14 @@ game do
 
   actor do
 
-    on :init do |e|
+    on :init do
       @x = game.renderer.element.width / 2
       @y = game.renderer.element.height / 2
       @radius = 70
-      @t = 0
-      @r = 1
-      @dir = 1
+      @speed = 10
     end
 
     on :draw do
-      @x += `#{@r} * Math.sin(#{@t})`
-      @y += `#{@r} * Math.cos(#{@t})`
-      @t += 1
-
-      @radius += 0.01
-
-      if @r > 80
-        @dir = -1
-      elsif @r < 0
-        @dir = 1
-      end
-
-      @r += (0.1 * @dir * (@radius / 70))
-
       context = game.renderer.context
 
       context.beginPath
@@ -42,6 +28,13 @@ game do
       context.lineWidth = 6
       context.strokeStyle = '#2E5794'
       context.stroke
+    end
+
+    on :input do
+      @x -= @speed if input.left?
+      @x += @speed if input.right?
+      @y -= @speed if input.top?
+      @y += @speed if input.bottom?
     end
 
   end
