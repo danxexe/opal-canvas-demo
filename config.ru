@@ -16,5 +16,7 @@ map '/assets' do
   run env
 end
 
+use Rack::Static, :urls => ['/'], :root => ".", :index => 'index.html'
+
 # Use simple Rack::Directory for serving current dir
-run Rack::Directory.new('.')
+run Rack::File.new('.')
